@@ -1,13 +1,14 @@
 package domain;
 
 public class LottoGame {
+    private static final int PRICE = 1000;
 
     public LottoGame() {
     }
 
     public Lottos purchaseLottos(Money amount) {
-        int lottoCount = Lotto.getNumberOfAvailablePurchases(amount);
-        return LottoFactory.generates(new DefaultShuffleStrategy(), lottoCount);
+        int count = amount.divide(PRICE);
+        return LottoFactory.generates(new DefaultShuffleStrategy(), count);
     }
 
     public LottoResult calculateResult(WinningLotto winningLotto, Lottos purchasedLottos) {
@@ -23,6 +24,7 @@ public class LottoGame {
     }
 
     private Money findUsedMoney(Lottos purchasedLottos) {
-        return purchasedLottos.getPurchasedAmount();
+        int count = purchasedLottos.getNumberOfLotto();
+        return new Money(count * PRICE);
     }
 }

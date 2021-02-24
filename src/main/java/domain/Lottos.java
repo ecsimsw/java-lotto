@@ -31,8 +31,4 @@ public class Lottos {
     public int getNumberOfLotto() {
         return lottos.size();
     }
-
-    public Money getPurchasedAmount() {
-        return Lotto.getPurchasedAmount(lottos.size());
-    }
 }
