@@ -13,7 +13,7 @@ public class Lotto {
 
     public Lotto(final int[] numbers) {
         this(new LottoNumbers(Arrays.stream(numbers)
-                .mapToObj(LottoNumber::new)
+                .mapToObj(LottoNumber::from)
                 .collect(Collectors.toList())));
     }
 
